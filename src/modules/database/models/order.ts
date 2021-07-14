@@ -15,10 +15,22 @@ export class Order extends Model implements IOrder {
   public createdDate: Date;
   @ApiProperty({ type: 'string', format: 'date-time' })
   public updatedDate: Date;
+  
   @ApiProperty()
   public items: OrderItem[];
-
+  @ApiProperty()
   public user: User;
+
+  @ApiProperty({ type: 'float' })
+  public get totalValue(): number {
+    return this.items
+      .map(item => item.totalValue)
+      .reduce((prev, curr) => prev += curr);
+  }
+
+  public static get virtualAttributes(): string[] {
+    return ['totalValue'];
+  }
 
   public static get tableName(): string {
     return 'Order';

@@ -1,9 +1,6 @@
-import { IOrderItem } from './orderItem';
-
 export interface IOrder {
   id?: number;
   status: enOrderStatus;
-  items: IOrderItem[];
 
   createdDate?: Date;
   updatedDate?: Date

@@ -22,6 +22,14 @@ export class OrderItem extends Model implements IOrderItem {
   @ApiProperty()
   public order: Order;
 
+  @ApiProperty({ type: 'float' })
+  public get totalValue(): number {
+    return this.quantity * this.price;
+  }
+
+  public static get virtualAttributes(): string[] {
+    return ['totalValue'];
+  }
 
   public static get tableName(): string {
     return 'OrderItem';

@@ -8,7 +8,8 @@ export async function up(knex: Knex): Promise<void> {
     table
       .integer('userId')
       .references('id')
-      .inTable('User');
+      .inTable('User')
+      .onDelete('CASCADE');
 
     table.dateTime('createdDate').notNullable();
     table.dateTime('updatedDate').notNullable();
