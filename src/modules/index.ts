@@ -7,8 +7,22 @@ import { AppModule } from './app/module';
 @Module({
   imports: [
     RouterModule.forRoutes([
-      { path: '/admin', module: AdminModule },
-      { path: '/app', module: AppModule }
+      {
+        path: '/api', 
+        module: this,
+        children: [
+          { 
+            path: '/admin', 
+            module: AdminModule 
+          },
+          { 
+            path: '/app', 
+            module: AppModule 
+          },
+        ]
+      }
+      
+      
     ]),
     AdminModule,
     AppModule

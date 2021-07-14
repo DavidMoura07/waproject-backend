@@ -1,6 +1,6 @@
 {
   "name": "waproject-ebay-server",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -29,7 +29,9 @@
     "docker:release:staging": "yarn docker:build:staging && yarn docker:push:staging",
     "docker:build:staging": "docker build -t waproject/waproject-base-api:staging -f docker/prod/Dockerfile .",
     "docker:push:staging": "docker push waproject/waproject-base-api:staging",
-    "deploy-server": "scripts/deploy-server.sh"
+    "deploy-server": "scripts/deploy-server.sh",
+    "commit": "cz",
+    "release": "standard-version"
   },
   "husky": {
     "hooks": {
@@ -66,6 +68,7 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.3",
     "source-map-support": "0.5.16",
+    "standard-version": "^9.3.0",
     "swagger-ui-express": "4.1.2",
     "tslib": "1.10.0",
     "uuid": "3.3.3"
@@ -88,8 +91,10 @@
     "@types/uuid": "3.4.6",
     "@typescript-eslint/eslint-plugin": "2.12.0",
     "@typescript-eslint/parser": "2.12.0",
+    "commitizen": "^4.2.4",
     "concurrently": "5.0.1",
     "cross-env": "6.0.3",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "6.7.2",
     "eslint-config-prettier": "6.7.0",
     "eslint-plugin-prettier": "3.1.2",
@@ -104,5 +109,10 @@
     "ts-node-dev": "1.0.0-pre.44",
     "tsconfig-paths": "3.9.0",
     "typescript": "3.7.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
