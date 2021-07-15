@@ -11,18 +11,18 @@ export class OrderItem extends Model implements IOrderItem {
   public id?: number;
   @ApiProperty({ type: 'integer' })
   public quantity: number;
-  @ApiProperty({ type: 'float' })
+  @ApiProperty({ type: 'number' })
   public price: number;
   @ApiProperty({ type: 'string', format: 'date-time' })
   public createdDate: Date;
   @ApiProperty({ type: 'string', format: 'date-time' })
   public updatedDate: Date;
-  @ApiProperty()
+  @ApiProperty({ type: Product })
   public product: Product;
-  @ApiProperty()
+  @ApiProperty({ type: Order })
   public order: Order;
 
-  @ApiProperty({ type: 'float' })
+  @ApiProperty({ type: 'number' })
   public get totalValue(): number {
     return this.quantity * this.price;
   }

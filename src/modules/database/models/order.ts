@@ -9,19 +9,19 @@ export class Order extends Model implements IOrder {
 
   @ApiProperty({ type: 'integer' })
   public id?: number;
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({ enum: enOrderStatus })
   public status: enOrderStatus;
   @ApiProperty({ type: 'string', format: 'date-time' })
   public createdDate: Date;
   @ApiProperty({ type: 'string', format: 'date-time' })
   public updatedDate: Date;
   
-  @ApiProperty()
+  @ApiProperty({ type: OrderItem, isArray: true})
   public items: OrderItem[];
-  @ApiProperty()
+  @ApiProperty({ type: User })
   public user: User;
 
-  @ApiProperty({ type: 'float' })
+  @ApiProperty({ type: 'number' })
   public get totalValue(): number {
     return this.items
       .map(item => item.totalValue)
