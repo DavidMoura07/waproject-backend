@@ -5,6 +5,24 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=waproject&metric=coverage)](https://sonarcloud.io/dashboard?id=waproject)
 
 
+### Implementações realizadas
+
+  - Adicionei um controller no módulo App chamado Order, juntamente com seu respectivo service e validators
+  - Adicionei um endpoint para criação de novo pedido POST(/api/app/order)
+  - Configurei rotas para iniciarem com /app
+  - Criei novas models para criação de orders e consequentemente suas respectivas migrations seeds e interfaces
+  - Criei arquivo de tests para o novo service (order.spec.ts)
+  - Configurei o endpoint /api/app/profile para trazer os pedidos do usuário logado (eager load)
+  - Adicionei configurações do sonar-qube ao projeto
+  - adicionei as bibliotecas commitzen e cz-conventional-changelog para padronização das mensagens de commit e geração automátizada do CHANGELOG.md
+
+### Modelo ER implementado
+
+![modeloER]()
+
+
+
+
 WaProject Api Base
 ==================
 
