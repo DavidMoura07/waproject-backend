@@ -8,11 +8,15 @@ export async function up(knex: Knex): Promise<void> {
 
     table
       .integer('productId')
+      .unsigned()
+      .index()
       .references('id')
       .inTable('Product');
 
     table
       .integer('orderId')
+      .unsigned()
+      .index()
       .references('id')
       .inTable('Order');
 

@@ -1,11 +1,12 @@
-import { OrderItem } from '../models/orderItem';
-import { User } from '../models/user';
+import { IOrderItem } from './orderItem';
+import { IUser } from './user';
 
 export interface IOrder {
   id?: number;
   status?: enOrderStatus;
-  items: OrderItem[];
-  user: User;
+  userId: number;
+  items: IOrderItem[];
+  user?: IUser;
 
   createdDate?: Date;
   updatedDate?: Date
