@@ -1,16 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDecimal, IsInt, IsNotEmpty, IsObject, IsOptional, Min } from 'class-validator';
+import { IsDecimal, IsInt, IsNotEmpty, IsOptional, Min } from 'class-validator';
 import { IOrderItem } from 'modules/database/interfaces/orderItem';
-
-import { ProductValidator } from './product';
 
 export class OrderItemValidator implements IOrderItem{
   
-  @IsNotEmpty()
-  @IsObject()
-  @ApiProperty({ required: true, type: ProductValidator })
-  product: ProductValidator;
-
   @IsNotEmpty()
   @IsInt()
   @Min(1)
@@ -22,5 +15,17 @@ export class OrderItemValidator implements IOrderItem{
   @Min(0)
   @ApiProperty({ required: false, type: 'number' })
   price: number;
+
+  @IsNotEmpty()
+  @IsInt()
+  @Min(1)
+  @ApiProperty({ required: true, type: 'integer' })
+  productId: number;
+
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @ApiProperty({ required: true, type: 'integer' })
+  orderId: number;
 
 }

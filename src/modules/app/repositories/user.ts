@@ -6,7 +6,7 @@ import { Transaction } from 'objection';
 @Injectable()
 export class UserRepository {
   public async findById(id: number, transaction?: Transaction): Promise<User> {
-    return User.query(transaction).findById(id);
+    return User.query(transaction).findById(id).withGraphFetched('orders.items.product');
   }
 
   public async findByEmail(email: string, transaction?: Transaction): Promise<User> {

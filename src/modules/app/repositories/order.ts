@@ -11,9 +11,6 @@ export class OrderRepository {
   }
 
   public async insert(model: IOrder, transaction?: Transaction): Promise<Order> {
-    const order = new Order();
-    order.user = model.user;
-    
     return Order.query(transaction).insert(model);
   }
 

@@ -1,11 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsNotEmpty, IsObject, IsOptional } from 'class-validator';
+import { IsArray, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 import { IOrder } from 'modules/database/interfaces/order';
-import { OrderItem } from 'modules/database/models/orderItem';
-import { User } from 'modules/database/models/user';
+import { IOrderItem } from 'modules/database/interfaces/orderItem';
 
 import { OrderItemValidator } from './orderItem';
-import { UserValidator } from './user';
 
 export class NewOrderValidator implements IOrder {
   
@@ -16,10 +14,10 @@ export class NewOrderValidator implements IOrder {
     isArray: true,
     required: true, 
   })
-  items: OrderItem[];
-  
+  items: IOrderItem[];
+
   @IsOptional()
-  @IsObject()
-  @ApiProperty({ required: false, type: UserValidator })
-  user: User;
+  @IsNumber()
+  @ApiProperty({ required: false, type: 'number' })
+  userId: number;
 }
