@@ -48,7 +48,7 @@ export class OrderService {
     productsWithNewStock.forEach(product => this.productRepository.update(product));
 
     // Validating User
-    if(!model.userId) model.userId = currentUser.id;
+    model.userId = currentUser.id;
     
     // validating price items
     model.items = this.checkItemsPrices(model.items, products);  
@@ -57,7 +57,7 @@ export class OrderService {
     const newOrder = await this.orderRepository.insert(model);
 
     // adding OrderItems to order
-    model.items.map(async orderItem => {
+    model.items.forEach(async orderItem => {
       orderItem.orderId = newOrder.id
       await this.orderItemRepository.insert(orderItem);
     });
