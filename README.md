@@ -62,6 +62,10 @@ curl --location --request GET 'http://localhost:3000/api/app/product?page=0&page
 --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB3YXByb2plY3QuY29tLmJyIiwiZmlyc3ROYW1lIjoiV2FQcm9qZWN0IiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGVzIjpbInN5c0FkbWluIl0sInR5cGUiOjAsImV4cCI6MTYyNjc2MTg2MywiaWF0IjoxNjI2NzMzMDYzfQ.lPUSp9vJYB4lWK3f7zBLkPTsx2OuPzqgOoxgYKD11ag'
 ```
 
+# Swagger
+
+Maiores informações podem ser encontradas no endpoint /swagger que contém toda a documentação da API, tanto das rotas anteriores quanto das criadas nesta implementação
+
 
 WaProject Api Base
 ==================
