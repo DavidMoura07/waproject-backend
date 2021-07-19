@@ -14,11 +14,14 @@
   - Criei arquivo de tests para o novo service (order.spec.ts)
   - Configurei o endpoint /api/app/profile para trazer os pedidos do usuário logado (eager load)
   - Adicionei configurações do sonar-qube ao projeto
-  - adicionei as bibliotecas commitzen e cz-conventional-changelog para padronização das mensagens de commit e geração automátizada do CHANGELOG.md
+  - Adicionei as bibliotecas commitzen e cz-conventional-changelog para padronização das mensagens de commit e geração automátizada do CHANGELOG.md
 
 ### Modelo ER implementado
 
-![modeloER]()
+![modeloER](https://github.com/DavidMoura07/waproject-backend/blob/master/docs/ER-WA-Project.png)
+
+Criei uma tabela Order que armazena os pedidos feitos pelos usuários, esta tabela esta ligada a uma tabela ItemOrder que correlaciona o produto com o pedido, registrando seu preço de venda e quantidade que são independentes dos preços dos produtos, visto que estes podem mudar. 
+Além disso cada pedido possui um status que é definido através de um enum.
 
 
 
