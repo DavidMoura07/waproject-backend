@@ -13,7 +13,6 @@ export class ProductRepository {
   public async findByIds(ids: number[], transaction?: Transaction): Promise<Product[]> {
     return Product.query(transaction)
       .select('*')
-      .where('stockQuantity', '>', 0)
       .whereIn('id', ids);
   }
 
@@ -38,7 +37,6 @@ export class ProductRepository {
   public async list(params: IPaginationParams, transaction?: Transaction): Promise<Page<Product>> {
     let query = Product.query(transaction)
       .select('*')
-      .where('stockQuantity', '>', 0)
       .page(params.page, params.pageSize);
 
     if (params.orderBy) {

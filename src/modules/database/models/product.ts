@@ -10,7 +10,7 @@ export class Product extends Model implements IProduct {
   public id?: number;
   @ApiProperty({ type: 'string' })
   public name: string;
-  @ApiProperty({ type: 'integer' })
+  @ApiProperty({ type: 'number' })
   public salesPrice: number;
   @ApiProperty({ type: 'integer' })
   public stockQuantity?: number;

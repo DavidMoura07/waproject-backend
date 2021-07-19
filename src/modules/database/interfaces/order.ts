@@ -1,6 +1,12 @@
+import { IOrderItem } from './orderItem';
+import { IUser } from './user';
+
 export interface IOrder {
   id?: number;
-  status: enOrderStatus;
+  status?: enOrderStatus;
+  userId: number;
+  items: IOrderItem[];
+  user?: IUser;
 
   createdDate?: Date;
   updatedDate?: Date

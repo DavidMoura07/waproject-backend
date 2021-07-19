@@ -1,23 +1,26 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Product } from 'modules/database/models/product';
+import { AuthRequired, CurrentUser } from 'modules/common/guards/token';
+import { ICurrentUser } from 'modules/common/interfaces/currentUser';
+import { enRoles } from 'modules/database/interfaces/user';
+import { Order } from 'modules/database/models/order';
 
-import { OrderRepository } from '../repositories/order';
 import { OrderService } from '../services/order';
-import { ListValidator } from '../validators/product/list';
+import { NewOrderValidator } from '../validators/order/newOrder';
 
 @ApiTags('Order')
 @Controller('/order')
-export class ProductController {
+@AuthRequired([enRoles.user])
+export class OrderController {
+  
   constructor(
-    private readonly orderService: OrderService, 
-    private readonly orderRepository: OrderRepository
+    private readonly orderService: OrderService
   ) {}
 
-  @Get()
-  @ApiResponse({ status: 200, type: [Product] })
-  public async list(@Query() model: ListValidator) {
-    return {};
+  @Post()
+  @ApiResponse({ status: 201, type: Order})
+  public async newOrder(@Body() model: NewOrderValidator, @CurrentUser() currentUser: ICurrentUser): Promise<Order>{
+    return this.orderService.newOrder(model, currentUser);
   }
 
 }

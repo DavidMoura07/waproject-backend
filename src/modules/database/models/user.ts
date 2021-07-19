@@ -15,7 +15,7 @@ export class User extends Model implements IUser {
   @ApiProperty({ type: 'string' })
   public email: string;
   public password: string;
-  @ApiProperty({ type: 'string', isArray: true })
+  @ApiProperty({ type: () => enRoles, isArray: true })
   public roles: enRoles[];
   @ApiProperty({ type: 'string', format: 'date-time' })
   public createdDate: Date;

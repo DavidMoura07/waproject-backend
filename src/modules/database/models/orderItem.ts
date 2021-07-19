@@ -1,7 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Model } from 'objection';
 
+import { IOrder } from '../interfaces/order';
 import { IOrderItem } from '../interfaces/orderItem';
+import { IProduct } from '../interfaces/product';
 import { Order } from './order';
 import { Product } from './product';
 
@@ -10,19 +12,22 @@ export class OrderItem extends Model implements IOrderItem {
   @ApiProperty({ type: 'integer' })
   public id?: number;
   @ApiProperty({ type: 'integer' })
+  public productId: number;
+  @ApiProperty({ type: 'integer' })
+  public orderId: number;
+  @ApiProperty({ type: 'integer' })
   public quantity: number;
-  @ApiProperty({ type: 'float' })
+  @ApiProperty({ type: 'number' })
   public price: number;
   @ApiProperty({ type: 'string', format: 'date-time' })
   public createdDate: Date;
   @ApiProperty({ type: 'string', format: 'date-time' })
   public updatedDate: Date;
-  @ApiProperty()
-  public product: Product;
-  @ApiProperty()
-  public order: Order;
+  
+  public product: IProduct;
+  public order: IOrder;
 
-  @ApiProperty({ type: 'float' })
+  @ApiProperty({ type: 'number' })
   public get totalValue(): number {
     return this.quantity * this.price;
   }
@@ -50,7 +55,7 @@ export class OrderItem extends Model implements IOrderItem {
         modelClass: Order,
         join: {
           from: 'Order.id',
-          to: 'OrderItem.order.id'
+          to: 'OrderItem.orderId'
         }
       }
     };
